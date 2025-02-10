@@ -1,0 +1,139 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap en HTML</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+</head>
+
+<body>
+    <section class="content">
+		<div class="container">
+		    
+		    <div class=" text-center mt-5 ">
+		        <h1 >Oficina Central de Correspondencia</h1>
+		    </div>
+		    <div class="row ">
+		      	<div class="col-lg-7 mx-auto">
+		        	<div class="card mt-2 mx-auto p-4 bg-light">
+		            	<div class="card-body bg-light">
+		       	        	<div class = "container">
+		                    	<!--<form id="contact-form" role="form" action="controladores/generarCorreo.php" method="post" enctype = "multipart/form-data">-->
+		                    	<form id="contact-form" role="form" action="./php/generarCorreo.php" method="post" enctype = "multipart/form-data" class="row g-3 needs-validation" novalidate>
+									<div class="controls">
+
+						                <div class="row">
+						                	<div class=" text-center mt-1" style="background-color: #030252 ;">
+		       									<h4 style="color: #eeeef9;">Información del oficio</h4>
+		   									</div>	
+
+						                    <div class="col-md-6">
+						                        <div class="form-group">
+						                        	<br>
+						                            <label for="form_selecTipo">Tipo de documento *</label>
+						                            <select  id="form_selecTipo" class="form-select" name="selecTipo" required>
+						                            	<option selected disabled value="">--Seleccione una opción--</option>													
+														<option value="Carta">Carta</option>
+														<option value="Circular">Circular</option>
+														<option value="Invitación">Invitación</option>
+														<option value="Memorándum">Memorándum</option>
+														<option value="Oficio">Oficio</option>
+														<option value="Otro">Otro</option>
+						                            </select>
+						                        </div>
+						                    </div>
+						                    <div class="col-md-6">
+						                    	<br>
+						                        <div class="form-group">
+						                        	<label for="form_selecSol">Solicitud interna o externa a la DGTIC *</label>
+						                            <select  id="form_selecSol" class="form-select" name="selecSol" required>
+						                            	<option selected disabled value="">--Seleccione una opción--</option>
+														<option value="Interan">Interna</option>
+														<option value="Externa">Externa</option>
+						                            </select>
+						                        </div>
+						                    </div>
+
+						                    <div class="col-md-12">
+						                        <div class="form-group">
+						                            <label for="form_oficio">Número de oficio o documento *</label> 
+                            						<input id="form_oficio" type="text" name="txtOficio" class="form-control" placeholder="Anotar el número de oficio o la referencia que contenga el documento." autocomplete="off" required>
+						                    	</div>
+						                    </div>
+
+						                    <div class="col-md-12">
+						                        <div class="form-group">
+						                            <label for="form_asunto">Asunto *</label>
+                            						<input id="form_asunto" type="text" name="txtAsunto" class="form-control" placeholder="Resumir de qué trata el documento. (Ejemplo: Se solicita cancelar línea telefónica)" required>
+						                        </div>
+						                    </div>
+
+						                    <div class="col-md-6">
+												<label for="formFileSm" class="form-label">Anexar Documento *</label>
+												<input class="form-control form-control-sm" id="formFileSm"  type="file" name="fileOficio" placeholder="Adjuntar oficio o documento digitalizado." required>
+												<br>
+											</div>
+
+						                	<div class=" text-center mt-1" style="background-color: #030252 ;">
+		       									<h4 style="color: #eeeef9;">Información del contacto</h4>
+		   									</div>
+
+						                    <div class="col-md-8">
+						                        <div class="form-group">
+						                        <br>
+						                            <label for="form_nombre">Nombre completo *</label>						                            
+                            						<input id="form_nombre" type="text" name="txtNombre" class="form-control" placeholder="Anotar su nombre completo" autocomplete="off" required>
+						                        </div>
+						                    </div>
+
+						                    <div class="col-md-8">
+						                        <div class="form-group">
+						                        	<label for="form_correo">Correo electrónico *</label>						                            
+                            						<input id="form_correo" type="email" name="txtCorreo" class="form-control" placeholder="Anotar su correo electrónico" autocomplete="off" required>
+						                        </div>
+						                    </div>
+
+						                    <div class="col-md-8">
+						                    	<div class="form-group">
+						                        	<label for="form_telefono">Teléfono de oficina (10 dígitos) *</label>
+                            						<input id="form_oficio" type="text" name="txtTelefono" class="form-control" minlength="10" maxlength="10"  pattern="^[1-9]\d*$"  placeholder="Anotar el teléfono de oficina" autocomplete="off"  pattern="\d*" required><br>
+												</div>
+						                    </div>
+						                    <center><input type="submit" class="btn btn-success btn-send  pt-2 btn-block" name="btnEnviar" value="Enviar solictud"></center>
+						                </div>
+		       					 	</div>
+		         				</form>
+		        			</div>
+		            	</div>
+		    		</div>
+		    	</div>
+			</div>
+		</div>
+	</section>
+    <script src="js/bootstrap.min.js"></script>
+</body>
+</html>
+
+
+
+<script type="text/javascript">
+	(function () {
+  		var forms = document.querySelectorAll('.needs-validation')
+	    Array.prototype.slice.call(forms)
+    	.forEach(function (form) {
+      	form.addEventListener('submit', function (event) {
+        	if (!form.checkValidity()) {
+          		event.preventDefault()
+         		event.stopPropagation()
+       		}
+
+        	form.classList.add('was-validated')
+      		}, false)
+    	})
+	})()
+</script>
